@@ -1,0 +1,9 @@
+form, .form-header p, button{
+    font-size: 15px;
+}
+
+@media all and (max-width: 600px){
+  form, .form-header p, button{
+    font-size: 10px;
+  }
+}

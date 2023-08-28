@@ -1,0 +1,24 @@
+<form [formGroup]= "myForm" class="add-form border p-4 rounded" (ngSubmit)= "onSubmit()">
+  <div class="form-header bg-dark text-light">
+    <p class="text-center py-2">Add Product</p>
+  </div>
+  <hr>
+  <div class="form-group">
+      <label for="prName">Product Name</label>
+      <input type="text" class="form-control" id="prName" name="productName" formControlName="productName">
+      <small *ngIf ="!myForm.get('productName').valid && myForm.get('productName').touched" class="form-text text-danger">
+          <span *ngIf= "myForm.get('productName')?.errors?.['required']" >Product Name is required!</span>
+      </small>
+  </div>
+  <div class="form-group my-3">
+    <label for="prPrice">Product Price</label>
+    <input type="text" class="form-control" id="prPrice" name="productPrice" formControlName="productPrice">
+    <small *ngIf ="!myForm.get('productPrice').valid && myForm.get('productPrice').touched" class="form-text text-danger">
+        <span *ngIf= "myForm.get('productPrice')?.errors?.['required']">Product price is Required!</span>
+    </small>
+  </div>
+  <div class="form-group text-center d-md-flex justify-content-between">
+    <button type="submit" class="btn btn-sm btn-primary text-center mb-2 mb-md-0" [disabled]= "!myForm.valid">{{ selectedItemIndex === -1 ? 'Add to cart' : 'Update' }}</button>
+    <button type="button" class="btn btn-sm btn-danger"(click)="closeForm()">Close</button>
+  </div>
+</form>

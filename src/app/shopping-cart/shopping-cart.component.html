@@ -1,0 +1,33 @@
+<div *ngIf="cartProduct.length === 0" class="noitems d-flex justify-content-center align-items-center">
+  <div class="text-center">
+    <h6 class="my-2">No Item Added In Cart</h6>
+    <button type="button" class="btn btn-primary btn-sm" (click)="openForm()">Add Item</button>
+  </div>
+</div>
+<div *ngIf="cartProduct.length !== 0" class="col-sm-12 py-2 border rounded cart">
+  <h6 class="text-center bg-dark text-light py-2 ">Shopping Cart</h6>
+  <div class="table-responsive font-weight-bold">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark text-center">
+        <tr>
+          <th colspan="2">Product Name</th>
+          <th>Price</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let prod of cartProduct; let i=index">
+          <th colspan="2">{{prod.productName}}</th>
+          <td>{{prod.productPrice | currency:'INR'}}</td>
+          <td class="d-flex justify-content-center"><button type="button" class="btn btn-primary btn-sm mx-2"
+              (click)='editProduct(i)'>Edit</button>
+            <button type="button" class="btn btn-danger btn-sm" (click)='removeProduct(i)'>Remove</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="text-center">
+      <button type="button" class="btn btn-primary btn-sm" (click)="openForm()">Add Item</button>
+    </div>
+  </div>
+</div>
